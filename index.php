@@ -1,5 +1,6 @@
 <?php
     include('scripts.php');
+	print_r($_POST);
 ?>
 
 <!DOCTYPE html>
