@@ -267,9 +267,36 @@
 						<div class="list-group list-group-flush rounded-bottom overflow-hidden panel-body p-0" id="to-do-tasks">
 							<!-- TO DO TASKS HERE -->
 							<?php
-								//PHP CODE HERE
-								//DATA FROM getTasks() FUNCTION
+								  
+                        $variable_that_bring_all_todo_tasks=getTasks(1);
+						while($data = mysqli_fetch_assoc($execution)){
 							?>
+							<button class="btn d-flex p-0 w-100 border-bottom"> 
+        <div class="start p-2">
+          <i class="fa-solid ${icon} "></i> 
+        </div>
+        <div class="text-start">
+          <div class="fw-bolder" id="zaa">------</div>
+          <div class="start-10">
+            <div class="fw-light">--------</div>
+            <div class="fw-bold" title="">---------</div>
+          </div>
+          <div class="">
+            <span class="badge bg-primary">--------</span>
+            <span class="badge bg-secondary">--------</span>
+            <button class="btn btn-danger btn-sm rounded-0 border-bottom" type="button" data-toggle="tooltip" data-placement="top" title="Delete" onclick="-----------"><i class="fa fa-trash"></i></button>
+            <button class="btn btn-success btn-sm rounded-0 border-bottom" type="button" data-bs-toggle="modal" data-bs-target="#modalForm" title="Edit" onclick="---------"><i class="fa fa-edit"></i></button>
+          </div>
+        
+      </button>
+	  <?php }
+    ?>
+
+
+
+
+
+							
 						</div>
 					</div>
 				</div>

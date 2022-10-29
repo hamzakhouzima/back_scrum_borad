@@ -10,11 +10,31 @@
     if(isset($_POST['delete']))      deleteTask();
     
 
-    function getTasks()
+    function getTasks($task_status)
     {
         //CODE HERE
         //SQL SELECT
+        require "database.php";
+        
+        
+        $request="SELECT tasks.*,statuses.name AS status_name , types.name AS types_name , priorities.name AS priority_name INNER join statuses on statuses.id=tasks.status_id INNER join priorities on priorities.id=tasks.priority_id INNER join types on types.id=tasks.type_id WHERE tasks.status_id=$task_status";
+        $execution=mysqli_query($connect,$request);
+        //  $data = mysqli_fetch_assoc($execution);
+
+        // print_r($data);
+        // while($data = sqli_fetch_assoc($execution)){
+        //     $id=$data['id'];
+        //     echo $id;
+        // }
+        // foreach ($execution as  $data) {
+        //     # code...
+        //     echo ($data['title']);
+        // }
+        
+        
+
         echo "Fetch all tasks";
+         return $execution;
     }
 
 
@@ -28,11 +48,10 @@
       $status=$_POST['status'];
       $date=$_POST['date'];
       $description=$_POST['description'];
-      // $checkbox=$_POST['task-type'];
       
     
-      // require 'database.php';
-      $request="INSERT INTO tasks(title,type_id, priority_id, status_id, task_datetime`, `description`) VALUES('$title','$task_type','$selected_priority','$status','$date','$description')";
+      require 'database.php';
+      $request="INSERT INTO tasks(title,type_id, priority_id, status_id, task_datetime, description) VALUES('$title','$task_type','$selected_priority','$status','$date','$description')";
       //
       $query=mysqli_query($connect,$request);
 
