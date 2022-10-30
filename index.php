@@ -1,6 +1,6 @@
 <?php
     include('scripts.php');
-	print_r($_POST);
+	// print_r($_POST);
 ?>
 
 <!DOCTYPE html>
@@ -42,7 +42,7 @@
 			<!-- BEGIN header-nav -->
 			<div class="navbar-nav">
 				<div class="navbar-item navbar-form">
-					<form action="" method="POST" name="search">
+					<form action="scripts.php" method="POST" name="search">
 						<div class="form-group">
 							<input type="text" class="form-control" placeholder="Enter keyword" />
 							<button type="submit" class="btn btn-search"><i class="fa fa-search"></i></button>
@@ -268,28 +268,8 @@
 							<!-- TO DO TASKS HERE -->
 							<?php
 								  
-                        $variable_that_bring_all_todo_tasks=getTasks(1);
-						while($data = mysqli_fetch_assoc($execution)){
-							?>
-							<button class="btn d-flex p-0 w-100 border-bottom"> 
-        <div class="start p-2">
-          <i class="fa-solid ${icon} "></i> 
-        </div>
-        <div class="text-start">
-          <div class="fw-bolder" id="zaa">------</div>
-          <div class="start-10">
-            <div class="fw-light">--------</div>
-            <div class="fw-bold" title="">---------</div>
-          </div>
-          <div class="">
-            <span class="badge bg-primary">--------</span>
-            <span class="badge bg-secondary">--------</span>
-            <button class="btn btn-danger btn-sm rounded-0 border-bottom" type="button" data-toggle="tooltip" data-placement="top" title="Delete" onclick="-----------"><i class="fa fa-trash"></i></button>
-            <button class="btn btn-success btn-sm rounded-0 border-bottom" type="button" data-bs-toggle="modal" data-bs-target="#modalForm" title="Edit" onclick="---------"><i class="fa fa-edit"></i></button>
-          </div>
-        
-      </button>
-	  <?php }
+                        getTasks(1);
+	
     ?>
 
 
@@ -314,9 +294,10 @@
 						<div class="list-group list-group-flush rounded-bottom overflow-hidden panel-body p-0" id="in-progress-tasks">
 							<!-- IN PROGRESS TASKS HERE -->
 							<?php
-								//PHP CODE HERE
-								//DATA FROM getTasks() FUNCTION
-							?>
+								  
+                        getTasks(2);
+	
+    ?>
 						</div>
 					</div>
 				</div>
@@ -336,6 +317,7 @@
 							<?php
 								//PHP CODE HERE
 								//DATA FROM getTasks() FUNCTION
+								getTasks(3);
 							?>
 						</div>
 					</div>
@@ -371,11 +353,11 @@
 								<label class="form-label">Type</label>
 								<div class="ms-3">
 									<div class="form-check mb-1">
-										<input class="form-check-input" name="task-type" type="radio" value="Feature" id="task-type-feature"/>
+										<input class="form-check-input" name="task-type" type="radio" value="2" id="task-type-feature"/>
 										<label class="form-check-label" for="task-type-feature">Feature</label>
 									</div>
 									<div class="form-check">
-										<input class="form-check-input" name="task-type" type="radio" value="Bug" id="task-type-bug"/>
+										<input class="form-check-input" name="task-type" type="radio" value="1" id="task-type-bug"/>
 										<label class="form-check-label" for="task-type-bug">Bug</label>
 									</div>
 								</div>
@@ -385,10 +367,10 @@
 								<label class="form-label">Priority</label>
 								<select class="form-select" name="priority" id="task-priority">
 									<option value="">Please select</option>
-									<option value="1">Low</option>
-									<option value="2">Medium</option>
-									<option value="3">High</option>
-									<option value="4">Critical</option>
+									<option value="4">Low</option>
+									<option value="3">Medium</option>
+									<option value="2">High</option>
+									<option value="1">Critical</option>
 								</select>
 							</div>
 							<div class="mb-3">
