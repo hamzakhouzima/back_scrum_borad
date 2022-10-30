@@ -21,8 +21,16 @@
         $execution=mysqli_query($connect,$request);
         while($data= mysqli_fetch_assoc($execution)){
             ?>
-            <button id="<?php echo$data["id"]; ?>" data-status="<?php echo$data['status_id']; ?>" type="button" data-bs-toggle="modal" data-bs-target="#modal-task" class="w-100 border-0 mb-1 bg-white d-flex " onclick="showmodal(<?php echo$data['id']; ?>)">
-									<div class="p-2">
+
+            <button id="<?php echo$data["id"]; ?>" data-status="<?php echo$data['status_id']; ?>" type="button" data-bs-toggle="modal" data-bs-target="#modal-task" class="w-100 border-0 mb-1 bg-white d-flex " onclick="showmodal(<?php echo$data['id'];
+            
+            
+            
+            
+            
+            
+            ?>)"> 
+									<div class="p-2">                                                                                                                                                        <!-- showmodal gives the id from db and store it as task index ,check index.php line 347 -->
 										<i class="bi bi-question-circle text-green-500 fs-4"></i>
 									</div>
 									<div class="d-flex flex-column text-start py-2">
@@ -77,9 +85,27 @@
     {
         //CODE HERE
         //SQL UPDATE
-        $_SESSION['message'] = "Task has been updated successfully !";
-		header('location: index.php');
+        include ('database.php');
+        $id          = $_POST['id'];
+        $title       = $_POST['title_input'];
+        $type        = $_POST['task-type'];
+        $priority    = $_POST['priority'];
+        $status      = $_POST['status'];
+        $date        = $_POST['date'];
+        $description = $_POST['description'];
+
+        
+
+        //SQL UPDATE
+        $sql = "UPDATE tasks SET `title`='$title',`task_datetime`='$date',`description`='$description',`type_id`='$type',`priority_id`='$priority',`status_id`='$status'  WHERE id = '$id'";
+        $query=mysqli_query($connect,$sql);
+        
+            $_SESSION['message'] = "Task has been updated successfully !";
+            header('location: index.php');
+       
     }
+      
+
 
     function deleteTask()
     {

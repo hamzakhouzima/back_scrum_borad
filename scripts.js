@@ -1,3 +1,3 @@
-function update(id){
-    console.log('hhh');
-    }
+// function update(id){
+//     console.log('hhh');
+//     }
