@@ -344,7 +344,7 @@
 					</div>
 					<div class="modal-body">
 							<!-- This Input Allows Storing Task Index  -->
-							<input type="hidden" id="task-id">
+							<input type="text" id="task-id" name="id" readonly>
 							<div class="mb-3">
 								<label class="form-label">Title</label>
 								<input type="text" class="form-control" name="title_input"  id="task-title"/>
@@ -406,8 +406,9 @@
 	<!-- ================== BEGIN core-js ================== -->
 	<script src="assets/js/vendor.min.js"></script>
 	<script src="assets/js/app.min.js"></script>
+	<script src="assets/js/jj.js"></script>
 	<!-- ================== END core-js ================== -->
-	<script src="scripts.js"></script>
+	<!-- <script src="scripts.js"></script> -->
 
 	<script>
 		//reloadTasks();

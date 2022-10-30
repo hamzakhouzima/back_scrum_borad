@@ -21,7 +21,7 @@
         $execution=mysqli_query($connect,$request);
         while($data= mysqli_fetch_assoc($execution)){
             ?>
-            <button id="<?php echo$data["id"]; ?>" data-status="<?php echo$data['status_id']; ?>" type="button" data-bs-toggle="modal" data-bs-target="#modal-task" class="w-100 border-0 mb-1 bg-white d-flex " onclick="edit(<?=$data['id']; ?>), updateAndDelete()">
+            <button id="<?php echo$data["id"]; ?>" data-status="<?php echo$data['status_id']; ?>" type="button" data-bs-toggle="modal" data-bs-target="#modal-task" class="w-100 border-0 mb-1 bg-white d-flex " onclick="showmodal(<?php echo$data['id']; ?>)">
 									<div class="p-2">
 										<i class="bi bi-question-circle text-green-500 fs-4"></i>
 									</div>
@@ -84,9 +84,21 @@
     function deleteTask()
     {
         //CODE HERE
-        //SQL DELETE
-        $_SESSION['message'] = "Task has been deleted successfully !";
+        //SQL DELETE  
+        include ('database.php');
+        $id = $_POST['id'];
+       
+        $request="DELETE FROM tasks WHERE id=$id";
+
+        $query=mysqli_query($connect,$request);
+
+        if($query){
+            $_SESSION['message'] = "Task has been deleted successfully !";
 		header('location: index.php');
+        }
+        
+
+       
     }
 
 
