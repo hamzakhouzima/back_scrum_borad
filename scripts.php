@@ -22,14 +22,14 @@
         while($data= mysqli_fetch_assoc($execution)){
             ?>
 
-            <button id="<?php echo$data["id"]; ?>" data-status="<?php echo$data['status_id']; ?>" type="button" data-bs-toggle="modal" data-bs-target="#modal-task" class="w-100 border-0 mb-1 bg-white d-flex " onclick="showmodal(<?php echo$data['id'];
+            <button id="<?php echo$data["id"]; ?>" data-status="<?php echo$data['status_id']; ?>" type="button" data-bs-toggle="modal" data-bs-target="#modal-task" class="w-100 border-0 mb-1 bg-white d-flex " onclick="showmodal(<?php echo$data['id'];?>)"> 
             
             
             
             
             
             
-            ?>)"> 
+            
 									<div class="p-2">                                                                                                                                                        <!-- showmodal gives the id from db and store it as task index ,check index.php line 347 -->
 										<i class="bi bi-question-circle text-green-500 fs-4"></i>
 									</div>
@@ -84,7 +84,7 @@
     function updateTask()
     {
         //CODE HERE
-        //SQL UPDATE
+        
         include ('database.php');
         $id          = $_POST['id'];
         $title       = $_POST['title_input'];
