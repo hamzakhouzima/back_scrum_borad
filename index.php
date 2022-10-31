@@ -257,7 +257,18 @@
 				<div class="col-xl-4 col-lg-6">
 					<div class="panel panel-inverse">
 						<div class="panel-heading">
-							<h4 class="panel-title">To do (<span id="to-do-tasks-count">0</span>)</h4>
+							<h4 class="panel-title">To do (<span id="to-do-tasks-count">
+							<?php
+									require "database.php";
+									$sql = "SELECT status_id FROM tasks where status_id = 1";
+									$results = mysqli_query($connect, $sql);
+									$rowcount = mysqli_num_rows($results);
+									echo $rowcount;
+									?>
+
+
+
+							</span>)</h4>
 							<div class="panel-heading-btn">
 								<a href="javascript:;" class="btn btn-xs btn-icon btn-default" data-toggle="panel-expand"><i class="fa fa-expand"></i></a>
 								<a href="javascript:;" class="btn btn-xs btn-icon btn-success" data-toggle="panel-reload"><i class="fa fa-redo"></i></a>
@@ -284,7 +295,15 @@
 				<div class="col-xl-4 col-lg-6">
 					<div class="panel panel-inverse">
 						<div class="panel-heading">
-							<h4 class="panel-title">In Progress (<span id="in-progress-tasks-count">0</span>)</h4>
+							<h4 class="panel-title">In Progress (<span id="in-progress-tasks-count">
+							<?php
+									require "database.php";
+									$sql = "SELECT status_id FROM tasks where status_id = 2";
+									$results = mysqli_query($connect, $sql);
+									$rowcount = mysqli_num_rows($results);
+									echo $rowcount;
+									?>
+							</span>)</h4>
 							<div class="panel-heading-btn">
 								<a href="javascript:;" class="btn btn-xs btn-icon btn-default" data-toggle="panel-expand"><i class="fa fa-expand"></i></a>
 								<a href="javascript:;" class="btn btn-xs btn-icon btn-success" data-toggle="panel-reload"><i class="fa fa-redo"></i></a>
@@ -305,7 +324,15 @@
 				<div class="col-xl-4 col-lg-6">
 					<div class="panel panel-inverse">
 						<div class="panel-heading">
-							<h4 class="panel-title">Done (<span id="done-tasks-count">0</span>)</h4>
+							<h4 class="panel-title">Done (<span id="done-tasks-count">
+							<?php
+									require "database.php";
+									$sql = "SELECT status_id FROM tasks where status_id = 3";
+									$results = mysqli_query($connect, $sql);
+									$rowcount = mysqli_num_rows($results);
+									echo $rowcount;
+									?>
+							</span>)</h4>
 							<div class="panel-heading-btn">
 								<a href="javascript:;" class="btn btn-xs btn-icon btn-default" data-toggle="panel-expand"><i class="fa fa-expand"></i></a>
 								<a href="javascript:;" class="btn btn-xs btn-icon btn-success" data-toggle="panel-reload"><i class="fa fa-redo"></i></a>
@@ -407,7 +434,7 @@
 	<!-- ================== BEGIN core-js ================== -->
 	<script src="assets/js/vendor.min.js"></script>
 	<script src="assets/js/app.min.js"></script>
-	<script src="assets/js/jj.js"></script>
+	<script src="assets/js/main.js"></script>
 	<!-- ================== END core-js ================== -->
 	<!-- <script src="scripts.js"></script> -->
 

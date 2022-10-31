@@ -26,7 +26,7 @@ function showmodal(modal_id){
         }
 
 
-        function edit(id){
+        function card_infos(id){
             // get the data saved in the attributes
         
             let title       = document.getElementById(id).children[1].children[0].getAttribute("data") 

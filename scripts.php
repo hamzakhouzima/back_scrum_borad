@@ -8,7 +8,7 @@
     if(isset($_POST['save']))        saveTask();
     if(isset($_POST['update']))      updateTask();
     if(isset($_POST['delete']))      deleteTask();
-    $icon;
+    
 
     function getTasks($task_status)
     {
@@ -22,9 +22,9 @@
                
             ?>
             
-            <button id="<?php echo$data["id"]; ?>" data-status="<?php echo$data['status_id']; ?>" method="get" type="button" data-bs-toggle="modal" data-bs-target="#modal-task"  class="w-100 border-0 mb-1 bg-white d-flex " onclick="showmodal(<?php echo$data['id'];?>);edit(<?php echo$data['id'];?>);"> 
+            <button id="<?php echo$data["id"]; ?>" data-status="<?php echo$data['status_id']; ?>" method="get" type="button" data-bs-toggle="modal" data-bs-target="#modal-task"  class="w-100 border-0 mb-1 bg-white d-flex " onclick="showmodal(<?php echo$data['id'];?>);card_infos(<?php echo$data['id'];?>);"> 
             <div class="p-2">                                                                                                                                                        <!-- showmodal gives the id from db and store it as task index ,check index.php line 347 -->
-                <i class="<?php $icon ;?>"></i> 
+                <i class="bi bi-question-circle text-green-500 fs-4"></i> 
               
             </div>
             <div class="d-flex flex-column text-start py-2">
@@ -66,16 +66,6 @@
      
     
       include('database.php');
-      if($status==1){
-      $icon="fa-solid fa-check";
-      }
-      else if($status==2){
-      $icon="fa-solid fa-check";
-      }
-      else{
-      $icon="fa-solid fa-check";
-      }
-
       $request="INSERT INTO `tasks`( `title`, `task_datetime`, `description`, `type_id`, `priority_id`, `status_id`) VALUES('$title','$date','$description',$task_type,$selected_priority,$status)";
       //
       $query=mysqli_query($connect,$request);
