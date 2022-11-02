@@ -1,6 +1,11 @@
 <?php
     include('scripts.php');
 	// print_r($_POST);
+
+
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -365,7 +370,7 @@
 	<div class="modal fade" id="modal-task">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form action="scripts.php" method="POST" id="form-task">
+				<form class="needs-validation" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" id="form-task" name="form-name" onsubmit="validat()" novalidate> <!-- action="scripts.php"-->
 					<div class="modal-header">
 						<h5 class="modal-title">Add Task</h5>
 						<a href="#" class="btn-close" data-bs-dismiss="modal"></a>
@@ -375,7 +380,11 @@
 							<input type="hidden" id="task-id" name="id" >
 							<div class="mb-3">
 								<label class="form-label">Title</label>
-								<input type="text" class="form-control" name="title_input"  id="task-title"/>
+								<input type="text" class="form-control" name="title_input"  id="task-title" required/>
+								<div class="invalid-feedback">
+      							
+								Please choose a username.
+                                </div>
 							</div>
 							<div class="mb-3">
 								<label class="form-label">Type</label>
@@ -387,6 +396,7 @@
 									<div class="form-check">
 										<input class="form-check-input" name="task-type" type="radio" value="1" id="task-type-bug"/>
 										<label class="form-check-label" for="task-type-bug">Bug</label>
+										
 									</div>
 								</div>
 								
@@ -424,8 +434,11 @@
 						<a href="#" class="btn btn-white" data-bs-dismiss="modal">Cancel</a>
 						<button type="submit" name="delete" class="btn btn-danger task-action-btn" id="task-delete-btn">Delete</a>
 						<button type="submit" name="update" class="btn btn-warning task-action-btn" id="task-update-btn">Update</a>
-						<button type="submit" name="save" class="btn btn-primary task-action-btn" id="task-save-btn">Save</button>
+						<button type="submit" name="save" class="btn btn-primary task-action-btn" id="task-save-btn" >Save</button>
 					</div>
+
+
+
 				</form>
 			</div>
 		</div>
