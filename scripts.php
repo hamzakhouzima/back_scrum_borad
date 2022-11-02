@@ -15,13 +15,10 @@
         //CODE HERE
         //SQL SELECT
         require "database.php";
-     // include database.php , that runs the connection query 
      
-   //$query="SELECT * FROM tasks"; 
-   //while ($data= mysqli_fetch_assoc("$query"));
    
 
-        $request="SELECT tasks.*,statuses.name AS status_name , types.name AS types_name , priorities.name AS priority_name  FROM tasks INNER join statuses on statuses.id=tasks.status_id INNER join priorities on priorities.id=tasks.priority_id INNER join types on types.id=tasks.type_id WHERE tasks.status_id=$task_status";
+        $request="SELECT tasks.*, types.name AS types_name , priorities.name AS priority_name  FROM tasks INNER join statuses on statuses.id=tasks.status_id INNER join priorities on priorities.id=tasks.priority_id INNER join types on types.id=tasks.type_id WHERE tasks.status_id=$task_status";
         //we store in $request the request variable the SQL request (which SELECTS the tasks table , and set alias ,and then the inner joins , and the conditions)
         $execution=mysqli_query($connect,$request);
         //connect and send the request 
@@ -32,7 +29,7 @@
                
             ?>
             
-            <button id="<?php echo$data["id"]; ?>" data-status="<?php echo$data['status_id']; ?>" method="get" type="button" data-bs-toggle="modal" data-bs-target="#modal-task"  class="w-100 border-0 mb-1 bg-white d-flex " onclick="showmodal(<?php echo$data['id'];?>);card_infos(<?php echo$data['id'];?>);"> 
+            <button id="<?php echo$data["id"]; ?>" data-status="<?php echo$data['status_id']; ?>"  type="button" data-bs-toggle="modal" data-bs-target="#modal-task"  class="w-100 border-0 mb-1 bg-white d-flex " onclick="showmodal(<?php echo$data['id'];?>);card_infos(<?php echo$data['id'];?>);"> 
             <div class="p-2">                                                                                                                                                        <!-- showmodal gives the id from db and store it as task index ,check index.php line 347 -->
                 <i class="bi bi-question-circle text-green-500 fs-4"></i> 
               
@@ -69,22 +66,13 @@
       $date=$_POST['date'];
       $description=$_POST['description'];
      
-    // if(isset($title)||isset($task_type)||isset($selected_priority)||isset($status)||isset($date)||isset($description)){
-    //     $_SESSION['message'] = "NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO riiick";
-    // } 
-
-
-
-
-
-
       include('database.php');
       $request="INSERT INTO `tasks`( `title`, `task_datetime`, `description`, `type_id`, `priority_id`, `status_id`) VALUES('$title','$date','$description',$task_type,$selected_priority,$status)";
       //
       $query=mysqli_query($connect,$request);
             if($query){
                 $_SESSION['message'] = "Task has been added successfully !";
-                header('location: index.php');
+               header('location: index.php');
             }
       
     }
@@ -137,22 +125,31 @@
        
     }
 
-function validation(){
-    $titleErr=$typeErr=$priorityErr=$statusErr=$dateErr=$descriptionErr="";
-    $title=$type=$priority=$status=$date=$description="";
-    if ($_SERVER["REQUEST_METHOD"] == "POST"){
-        if(empty($_POST["title_input"]))
-        $titleErr="title is required";
-    }
-    else{
-        $title=test_input($_POST["title_input"]);
-    }
+// function validation(){
+//     $titleErr=$typeErr=$priorityErr=$statusErr=$dateErr=$descriptionErr="";
+//     $title=$type=$priority=$status=$date=$description="";
+//     if ($_SERVER["REQUEST_METHOD"] == "POST"){
+//         if(empty($_POST["title_input"]))
+//         $titleErr="title is required";
+//         echo $titleErr;
+
+//     }
+//     else{
+//         $title=test_input($_POST["title_input"]);
+//     }
 
 
-
-
-
+function task_counter($task_value){
+            require "database.php";
+            
+            $sql = "SELECT status_id FROM tasks where status_id = $task_value"; 
+            $results = mysqli_query($connect, $sql);
+            $rowcount = mysqli_num_rows($results);
+            echo $rowcount;
+									
 }
+
+//}
 
     //bring data from the database and check the status of the task and make a condition , if status== todo 
     //and make a variable with the html code as value to put it in the right place , 

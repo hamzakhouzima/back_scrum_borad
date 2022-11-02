@@ -228,7 +228,7 @@
 				</div>
 				
 				<div class="ms-auto">
-				<a href="#modal-task" data-bs-toggle="modal" class="btn btn-success btn-rounded px-4 rounded-pill" ><i class="fa fa-plus fa-lg me-2 ms-n2 text-success-900"></i> Add Task</a>
+				<a href="#modal-task" data-bs-toggle="modal" class="btn btn-success btn-rounded px-4 rounded-pill" onclick="event()" ><i class="fa fa-plus fa-lg me-2 ms-n2 text-success-900"></i> Add Task</a>
 				</div>
 			</div>
 			
@@ -264,11 +264,12 @@
 						<div class="panel-heading">
 							<h4 class="panel-title">To do (<span id="to-do-tasks-count">
 							<?php
-									require "database.php";
-									$sql = "SELECT status_id FROM tasks where status_id = 1";
-									$results = mysqli_query($connect, $sql);
-									$rowcount = mysqli_num_rows($results);
-									echo $rowcount;
+									// require "database.php";
+									// $sql = "SELECT status_id FROM tasks where status_id = 1";
+									// $results = mysqli_query($connect, $sql);
+									// $rowcount = mysqli_num_rows($results);
+									// echo $rowcount;
+									task_counter(1);
 									?>
 
 
@@ -286,13 +287,7 @@
 							<?php
 								  
                         getTasks(1);
-	
     ?>
-
-
-
-
-
 							
 						</div>
 					</div>
@@ -301,12 +296,13 @@
 					<div class="panel panel-inverse">
 						<div class="panel-heading">
 							<h4 class="panel-title">In Progress (<span id="in-progress-tasks-count">
-							<?php
-									require "database.php";
-									$sql = "SELECT status_id FROM tasks where status_id = 2";
-									$results = mysqli_query($connect, $sql);
-									$rowcount = mysqli_num_rows($results);
-									echo $rowcount;
+							 <?php 
+									// require "database.php";
+									// $sql = "SELECT status_id FROM tasks where status_id = 2";
+									// $results = mysqli_query($connect, $sql);
+									// $rowcount = mysqli_num_rows($results);
+									// echo $rowcount;
+									task_counter(2);
 									?>
 							</span>)</h4>
 							<div class="panel-heading-btn">
@@ -331,11 +327,12 @@
 						<div class="panel-heading">
 							<h4 class="panel-title">Done (<span id="done-tasks-count">
 							<?php
-									require "database.php";
-									$sql = "SELECT status_id FROM tasks where status_id = 3";
-									$results = mysqli_query($connect, $sql);
-									$rowcount = mysqli_num_rows($results);
-									echo $rowcount;
+									// require "database.php";
+									// $sql = "SELECT status_id FROM tasks where status_id = 3";
+									// $run = mysqli_query($connect, $sql);
+									// $counter = mysqli_num_rows($run);
+									// echo $counter;
+									task_counter(3);
 									?>
 							</span>)</h4>
 							<div class="panel-heading-btn">
@@ -370,7 +367,8 @@
 	<div class="modal fade" id="modal-task">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form class="needs-validation" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" id="form-task" name="form-name" onsubmit="validat()" novalidate> <!-- action="scripts.php"-->
+
+				<form class="needs-validation" method="POST"  id="form-task" name="form-name" onsubmit="validat(); reset_form();" novalidate> <!-- action="scripts.php"-->
 					<div class="modal-header">
 						<h5 class="modal-title">Add Task</h5>
 						<a href="#" class="btn-close" data-bs-dismiss="modal"></a>
@@ -452,7 +450,7 @@
 	<!-- <script src="scripts.js"></script> -->
 
 	<script>
-		//reloadTasks();
+		
 	</script>
 </body>
 </html>
