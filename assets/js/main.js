@@ -43,11 +43,6 @@ function eventT(){
     document.getElementById("task-save-btn").style.display="block";
 
 
-
-
-
-
-
 }
 function reset_form(){
     document.getElementById('form-task').reset();

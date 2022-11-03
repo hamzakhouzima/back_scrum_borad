@@ -264,11 +264,7 @@
 						<div class="panel-heading">
 							<h4 class="panel-title">To do (<span id="to-do-tasks-count">
 							<?php
-									// require "database.php";
-									// $sql = "SELECT status_id FROM tasks where status_id = 1";
-									// $results = mysqli_query($connect, $sql);
-									// $rowcount = mysqli_num_rows($results);
-									// echo $rowcount;
+								
 									task_counter(1);
 									?>
 
@@ -297,11 +293,7 @@
 						<div class="panel-heading">
 							<h4 class="panel-title">In Progress (<span id="in-progress-tasks-count">
 							 <?php 
-									// require "database.php";
-									// $sql = "SELECT status_id FROM tasks where status_id = 2";
-									// $results = mysqli_query($connect, $sql);
-									// $rowcount = mysqli_num_rows($results);
-									// echo $rowcount;
+									
 									task_counter(2);
 									?>
 							</span>)</h4>
@@ -327,11 +319,7 @@
 						<div class="panel-heading">
 							<h4 class="panel-title">Done (<span id="done-tasks-count">
 							<?php
-									// require "database.php";
-									// $sql = "SELECT status_id FROM tasks where status_id = 3";
-									// $run = mysqli_query($connect, $sql);
-									// $counter = mysqli_num_rows($run);
-									// echo $counter;
+								
 									task_counter(3);
 									?>
 							</span>)</h4>
