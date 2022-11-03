@@ -6,7 +6,7 @@ function showmodal(modal_id){
 
 
 
-        
+
 
 
         function card_infos(id){
@@ -29,13 +29,14 @@ function showmodal(modal_id){
             if(type == 2){document.getElementById("task-type-bug").checked = true};
 
             document.getElementById("task-save-btn").style.display="none";
-
+            document.getElementById("task-delete-btn").style.display="block";
+            document.getElementById("task-update-btn").style.display="block";
            
         
         }
 
 
-function event(){
+function eventT(){
 
     document.getElementById("task-delete-btn").style.display="none";
     document.getElementById("task-update-btn").style.display="none";
@@ -56,18 +57,6 @@ function reset_form(){
 
 
 
-// function validat(){
-
-// let validation=document.forms["form-name"]["title_input"].value;
-// if(validation==""){
-
-// alert("hahia khdama");
-// return false;
-
-// }
-
-
-// }
 
 
     
